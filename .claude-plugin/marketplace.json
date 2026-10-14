@@ -16,6 +16,15 @@
       "skills": [
         "./skills/rajkaj-file-noting"
       ]
+    },
+    {
+      "name": "unicode-to-devlys",
+      "description": "Convert Hindi (Devanagari Unicode / Mangal) text in a .docx to DevLys 010 / Kruti Dev 010 encoding, keeping English, tables and formatting intact.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/unicode-to-devlys"
+      ]
     }
   ]
 }
