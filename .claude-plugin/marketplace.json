@@ -1,0 +1,21 @@
+{
+  "name": "rajbrijesh-skills",
+  "owner": {
+    "name": "rajbrijesh"
+  },
+  "metadata": {
+    "description": "Claude skills for Rajasthan Government office work",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "rajkaj-file-noting",
+      "description": "Draft Hindi file notes (टिप्पणी / नोटशीट) on Rajasthan Government files for RajKaj e-File or paper files, with page references and no invented facts.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/rajkaj-file-noting"
+      ]
+    }
+  ]
+}
