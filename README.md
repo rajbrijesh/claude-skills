@@ -59,6 +59,10 @@ skills/rajkaj-file-noting/
 
 सरकारी पत्रावलियों में कर्मचारियों, शिकायतकर्ताओं और ठेकेदारों की व्यक्तिगत जानकारी होती है। यह skill टिप्पणी केवल चैट में देती है और पत्रावली की कोई सामग्री सार्वजनिक लिंक या artifact के रूप में प्रकाशित नहीं करती। `noting-format.md` का उदाहरण पूरी तरह काल्पनिक है।
 
+## लाइसेंस
+
+[MIT License](LICENSE) — आप इन skills को उपयोग, कॉपी, संशोधित और आगे वितरित कर सकते हैं, बशर्ते LICENSE की प्रति साथ रहे।
+
 ---
 
 ## English
@@ -66,3 +70,5 @@ skills/rajkaj-file-noting/
 **rajkaj-file-noting** drafts Hindi (Devanagari) file notes (टिप्पणी / नोटशीट) on Rajasthan Government files, following state office noting practice for RajKaj e-File or paper files. It reads the main letter and every attachment, builds a chronology, and proposes ready-to-paste notes with page and flag references, alternative notes where the decision can go more than one way, and separate remarks on gaps and inconsistencies. It never invents reference numbers, dates, amounts or rule numbers.
 
 Install in Claude Code with `/plugin marketplace add rajbrijesh/claude-skills`, then `/plugin install rajkaj-file-noting@rajbrijesh-skills`, or copy `skills/rajkaj-file-noting` into `~/.claude/skills/`.
+
+Licensed under the [MIT License](LICENSE).
