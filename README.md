@@ -1,0 +1,68 @@
+# Claude Skills — राजस्थान सरकारी कामकाज के लिए
+
+Claude (Claude Code, Claude.ai, Cowork) के लिए बनाई गई skills, जो राजस्थान सरकार के दफ़्तरी काम को तेज़ और सटीक बनाती हैं।
+
+## उपलब्ध skills
+
+| Skill | काम |
+|---|---|
+| [rajkaj-file-noting](skills/rajkaj-file-noting) | पत्रावली (RajKaj e-File या कागज़ी फ़ाइल) पर हिन्दी में टिप्पणी / नोटशीट का प्रारूप तैयार करना |
+
+## rajkaj-file-noting
+
+मुख्य पत्र और उसके सभी संलग्नक (टाइप्ड या स्कैन PDF, फ़ोटो, हस्तलिखित पृष्ठ, Word, Excel) पढ़कर यह skill ऐसी टिप्पणी प्रस्तावित करती है जिसे सीधे नोटशीट पर लगाया जा सके।
+
+- हर फ़ाइल की सूची बनाती है और पहचानती है कि कौन-सा पृष्ठ टाइप्ड है, कौन-सा स्कैन, और कौन-सा Kruti Dev / DevLys / Chanakya जैसे पुराने फ़ॉन्ट में है
+- हर पृष्ठ पढ़कर तथ्यों का कालक्रम बनाती है
+- टिप्पणी इन भागों में: विषय, संदर्भ, प्रकरण की पृष्ठभूमि, विचारणीय बिन्दु, नियम / परिपत्र स्थिति, प्रस्ताव, समापन वाक्य
+- हर तथ्य के साथ पृष्ठ या पताका का संदर्भ (पृ.सं. 12/प.व्य., पृ.सं. 3/टि., पताका 'क')
+- भाषा सुझावात्मक रहती है ("प्रस्तावित है कि …"), आदेशात्मक नहीं
+- कोई क्रमांक, दिनांक, राशि या नियम मनगढ़ंत नहीं; जो जानकारी पत्रावली में नहीं है, वहाँ "[पत्रावली में उपलब्ध नहीं]"
+- निर्णय एक से अधिक दिशा में जा सकता हो तो वैकल्पिक टिप्पणियाँ, और कमियों / विरोधाभासों पर अलग से टिप्पणी
+
+### फ़ाइलें
+
+```
+skills/rajkaj-file-noting/
+├── SKILL.md                    # मुख्य निर्देश
+├── references/
+│   └── noting-format.md        # टिप्पणी का साँचा, मानक वाक्यांश, समापन वाक्य, काल्पनिक उदाहरण
+└── scripts/
+    ├── inventory.py            # फ़ाइलों / पृष्ठों की सूची, पुराने फ़ॉन्ट और स्कैन पृष्ठों की पहचान
+    └── check_facts.py          # भाषा सुधार के बाद अंक, दिनांक, संदर्भ बदले तो नहीं — इसकी जाँच
+```
+
+## इंस्टॉल कैसे करें
+
+**Claude Code — plugin marketplace से**
+
+```
+/plugin marketplace add rajbrijesh/claude-skills
+/plugin install rajkaj-file-noting@rajbrijesh-skills
+```
+
+**Claude Code — सीधे कॉपी करके**
+
+`skills/rajkaj-file-noting` फ़ोल्डर को `~/.claude/skills/` (सभी प्रोजेक्ट के लिए) या प्रोजेक्ट के `.claude/skills/` में कॉपी करें।
+
+**Claude.ai / Cowork**
+
+`rajkaj-file-noting` फ़ोल्डर की ZIP फ़ाइल बनाकर Claude की settings में custom skill के रूप में अपलोड करें।
+
+## ज़रूरतें
+
+- Python 3 और poppler-utils (`pdfinfo`, `pdftotext`, `pdftoppm`)
+- वैकल्पिक: `python-docx`, `openpyxl` (Word / Excel फ़ाइलों की सूची के लिए)
+- वैकल्पिक skills: स्कैन और हस्तलिखित पृष्ठों के लिए HandwritingOCR की `transcribe` skill, भाषा सुधार के लिए कोई `humanizer` skill, और Word / Excel के लिए `docx` / `xlsx` skills। ये न हों तो Claude पृष्ठों की इमेज स्वयं पढ़ता है।
+
+## गोपनीयता
+
+सरकारी पत्रावलियों में कर्मचारियों, शिकायतकर्ताओं और ठेकेदारों की व्यक्तिगत जानकारी होती है। यह skill टिप्पणी केवल चैट में देती है और पत्रावली की कोई सामग्री सार्वजनिक लिंक या artifact के रूप में प्रकाशित नहीं करती। `noting-format.md` का उदाहरण पूरी तरह काल्पनिक है।
+
+---
+
+## English
+
+**rajkaj-file-noting** drafts Hindi (Devanagari) file notes (टिप्पणी / नोटशीट) on Rajasthan Government files, following state office noting practice for RajKaj e-File or paper files. It reads the main letter and every attachment, builds a chronology, and proposes ready-to-paste notes with page and flag references, alternative notes where the decision can go more than one way, and separate remarks on gaps and inconsistencies. It never invents reference numbers, dates, amounts or rule numbers.
+
+Install in Claude Code with `/plugin marketplace add rajbrijesh/claude-skills`, then `/plugin install rajkaj-file-noting@rajbrijesh-skills`, or copy `skills/rajkaj-file-noting` into `~/.claude/skills/`.
